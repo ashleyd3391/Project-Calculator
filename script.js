@@ -1,39 +1,36 @@
-const numberButtons = document.querySelectorAll(".button");
+//Buttons
+const numberButtons = document.querySelectorAll(".numberButton");
+const operatorButtons = document.querySelectorAll(".operatorButton");
+
+//Display
 const screen = document.querySelector(".calcScreen");
+
+//Operators
 const plus = document.querySelector("#plus");
-const num2 = 2
+const minus = document.querySelector("#minus");
+const times = document.querySelector("#times");
+const divide = document.querySelector("#divide")
+const equal = document.querySelector("#equal");
+const decimal = document.querySelector("#decimal");
+const sign = document.querySelector("#sign");
+const percent = document.querySelector("#percent");
+const clear = document.querySelector("#clear");
+const deleteNumber = document.querySelector("#delete");
 
+//Values
 
-// Basic additon, subtraction, multiplication, and division functions 
-
-function add (num1, num2){
-    let addSum = num1 + num2;
-    return addSum;
-}
-
-function subtract (num1, num2){
-    let minusSum = num1 - num2;
-    return minusSum;
-}
-
-function multiply (num1, num2){
-    let timesSum = num1 * num2;
-    return timesSum;
-}
-
-function divide (num1, num2){
-    let divideSum = num1 / num2;
-    return divideSum;
-}
-
-// Operate function takes operator and calls one of the above functions
-
-function operate (num1, num2){
-  
-}
 
 //Loop between buttons to display their text content when clicked
 
 numberButtons.forEach((button) =>
-  button.addEventListener('click', () => screen.innerHTML = (button.textContent))
-)
+    button.addEventListener('click', () => screen.innerHTML = (button.textContent))
+);
+
+operatorButtons.forEach((button) =>
+    button.addEventListener('click', () => screen.innerHTML = (button.textContent))
+);
+
+clear.addEventListener("click", () => screen.innerHTML = "0");
+
+
+equal.addEventListener("click", operate());
