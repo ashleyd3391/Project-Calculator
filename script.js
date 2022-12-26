@@ -8,15 +8,26 @@ const screen2 = document.querySelector(".calcScreen2");
 
 //Operators
 const plus = document.querySelector("#plus");
+      plus.addEventListener("click", handleOperator);
+
 const minus = document.querySelector("#minus");
+      minus.addEventListener("click", handleOperator);
+
 const times = document.querySelector("#times");
-const divide = document.querySelector("#divide")
+      times.addEventListener("click", handleOperator);
+
+const divide = document.querySelector("#divide");
+      divide.addEventListener("click", handleOperator);
+
 const equal = document.querySelector("#equal");
-    equal.addEventListener("click", calculate);
+      equal.addEventListener("click", calculate);
+      
 const decimal = document.querySelector("#decimal");
 const sign = document.querySelector("#sign");
 const percent = document.querySelector("#percent");
+
 const clear = document.querySelector("#clear");
+      clear.addEventListener("click", reset);
 const deleteNumber = document.querySelector("#delete");
 
 //Values
@@ -29,7 +40,7 @@ let operator = "";
     numberButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
             updateNumber(e.target.textContent)
-            screen2.textContent = currentValue;
+            previousValue = parseInt(screen.textContent);
         
         });
     });
@@ -39,8 +50,10 @@ let operator = "";
         operatorButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 updateNumber(e.target.textContent);
-                screen2.textContent = previousValue + " " + operator;
-                screen.textContent = currentValue;
+                
+
+               
+
             });
         });
 
@@ -52,28 +65,51 @@ function updateNumber(number){
 }
 
 
-function handleOperator(op) {
-    operator = op;
-    previousValue = currentValue;
-    currentValue = "";
-
+function handleOperator(operator) {
+   
+    screen2.textContent = previousValue;
+    screen.textContent = currentValue;
+    currentValue = " ";
+    
+    
 }
 
 
 function calculate(){
-    previousValue = Number(previousValue);
-    currentValue = Number(currentValue);
+    previousValue = parseInt(screen2.textContent);
+    currentValue = parseInt(screen.textContent);
 
-    screen.textContent = previousValue += currentValue;
+    if(operator = "+"){
+        screen2.textContent = `${previousValue}` + "+" + `${currentValue}` + "=";
+        screen.textContent = (previousValue += currentValue);
+    }
     
+    else if(operator = "-"){
+        screen2.textContent = `${previousValue}``${currentValue}` + "=";
+        screen.textContent = (previousValue -= currentValue);
+    }
+
+    else if(operator = "*"){
+        screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+        screen.textContent = (previousValue *= currentValue);
+        
+    }
+
+    else{
+        screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+        screen.textContent = divide;
+    }
+
 };
 
 
 
 //Resets calculator
 function reset(){
-clear.addEventListener("click", () => screen.innerHTML = "0");
-clear.addEventListener("click", () => screen2.innerHTML = "0");
+previousValue = "";
+currentValue = "";
+operator = ""
+screen2.textContent = "0";
+screen.textContent = "0";
 };
 
-reset();
