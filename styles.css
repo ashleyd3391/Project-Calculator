@@ -11,11 +11,12 @@
    height: 600px;
    width: 500px;
    padding-top: 80px;
+   padding-bottom: 40px;
    margin-top: 100px;
    border-radius: 50px;
 }
 
-.calcScreen{
+.calcScreen, .calcScreen2{
     display: flex;
     background-color: rgb(110, 60, 81);
     height: 80px;
@@ -28,7 +29,10 @@
     border-color:  rgb(206, 97, 115);;
 }
 
-.calcNumbers{
+.calcScreen2{
+    margin-bottom: -5px;
+}
+.calcButtons{
     display: inline-block;
     height: 500px;
     width: 400px;
@@ -42,7 +46,7 @@
     justify-content: center;
 }
 
-.button{
+.numberButton, .operatorButton, #clear{
     height: 90px;
     width: 90px;
     border-radius: 100px;
