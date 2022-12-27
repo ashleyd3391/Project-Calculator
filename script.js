@@ -34,6 +34,7 @@ const deleteNumber = document.querySelector("#delete");
 let previousValue = "";
 let currentValue = "";
 let operator = "";
+let operators = ["+","-","*","/" ];
 
 //Loop between buttons to display their text content when clicked
 
@@ -50,6 +51,8 @@ let operator = "";
         operatorButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 updateNumber(e.target.textContent);
+
+            
                 
 
                
@@ -60,7 +63,7 @@ let operator = "";
 function updateNumber(number){
     if(currentValue.length <= 5) {
         currentValue += number;
-        screen.textContent = currentValue;
+        screen.textContent = currentValue + " ";
     }
 }
 
@@ -69,8 +72,9 @@ function handleOperator(operator) {
    
     screen2.textContent = previousValue;
     screen.textContent = currentValue;
-    currentValue = " ";
-    
+    currentValue = "";
+
+
     
 }
 
@@ -79,28 +83,45 @@ function calculate(){
     previousValue = parseInt(screen2.textContent);
     currentValue = parseInt(screen.textContent);
 
-    if(operator = "+"){
-        screen2.textContent = `${previousValue}` + "+" + `${currentValue}` + "=";
-        screen.textContent = (previousValue += currentValue);
+    
+    if(screen.textContent.includes("+")){
+
+        function addition() {
+            let operator = "+";
+            screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+            screen.textContent = (previousValue += currentValue);
+        }
+
+        addition();
     }
     
-    else if(operator = "-"){
-        screen2.textContent = `${previousValue}``${currentValue}` + "=";
-        screen.textContent = (previousValue -= currentValue);
+    else if(screen.textContent.includes("-")){
+
+        function subtraction() {
+            let operator = "-";
+            screen2.textContent = `${previousValue}` + operator + (currentValue * -1) + "=";
+            screen.textContent = (previousValue -= (currentValue * -1));
+
+        }
+
+        subtraction();
     }
 
-    else if(operator = "*"){
-        screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-        screen.textContent = (previousValue *= currentValue);
+    else if(screen.textContent.includes("*")){
+
+        function multiplication() {
+            let operator = "*";
+            screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+            screen.textContent = (previousValue *= currentValue);
+
+        }
+
+        multiplication();
+    }
+
+   
         
-    }
-
-    else{
-        screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-        screen.textContent = divide;
-    }
-
-};
+    };
 
 
 
@@ -113,3 +134,11 @@ screen2.textContent = "0";
 screen.textContent = "0";
 };
 
+
+//Next Steps:
+//  1. Fix multiplication error
+//  2. Fix division error
+//  3. Make delete button functional
+//  4. Make percentage button functional
+//  5. Make decimal button functional
+//  6. Make sign button functional
