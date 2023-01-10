@@ -108,3 +108,14 @@
     background-color: rgb(206, 97, 115);
     color: white;
 }
+
+.bodyTail{
+    height: 130px;
+    width: 130px;
+    background-color: rgb(245, 219, 219);
+    border-color: rgb(206, 97, 115);
+    border-style: solid;
+    border-radius: 100px;
+    margin-left: 885px;
+    margin-bottom: 100px;
+}
