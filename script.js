@@ -24,6 +24,7 @@ const equal = document.querySelector("#equal");
       
 const decimal = document.querySelector("#decimal");
 const sign = document.querySelector("#sign");
+      sign.addEventListener("click", changeSign);
 const percent = document.querySelector("#percent");
 
 const clear = document.querySelector("#clear");
@@ -40,8 +41,10 @@ let operators = ["+","-","*","/" ];
 
     numberButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
-            updateNumber(e.target.textContent)
+            updateNumber(e.target.textContent);
             previousValue = parseInt(screen.textContent);
+            
+            
         
         });
     });
@@ -51,10 +54,8 @@ let operators = ["+","-","*","/" ];
         operatorButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 updateNumber(e.target.textContent);
-
-            
                 
-
+                
                
 
             });
@@ -65,7 +66,9 @@ function updateNumber(number){
         currentValue += number;
         screen.textContent = currentValue + " ";
     }
-}
+ 
+    }
+
 
 
 function handleOperator(operator) {
@@ -73,6 +76,10 @@ function handleOperator(operator) {
     screen2.textContent = previousValue;
     screen.textContent = currentValue;
     currentValue = "";
+    
+    
+
+
 
 
     
@@ -107,20 +114,29 @@ function calculate(){
         subtraction();
     }
 
-    else if(screen.textContent.includes("*")){
+   else if(screen.textContent.includes("*")){
 
-        function multiplication() {
+        function multiplication(){
             let operator = "*";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
             screen.textContent = (previousValue *= currentValue);
+         
+            } 
 
+            multiplication();
         }
 
-        multiplication();
-    }
 
-   
-        
+    else{
+
+        function division(){
+        let operator = "/";
+        screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+        screen.textContent = (previousValue /= currentValue);
+        }
+
+        division();
+}
     };
 
 
@@ -133,6 +149,33 @@ operator = ""
 screen2.textContent = "0";
 screen.textContent = "0";
 };
+
+    
+
+        function changeSign(){
+
+
+        if(Number(screen2.textContent) >= -1 || Number(screen.textContent) >= -1){
+            currentValue = screen.textContent;
+            screen2.textContent = (currentValue) * -1;
+            currentValue = "";
+            previousValue = Number(screen2.textContent);
+            screen2.textContent = previousValue;
+        }
+
+
+
+        else if(Number(screen2.textContent) <= -1 || Number(screen.textContent) <= -1)
+        
+            {
+                screen2.textContent = Number(screen2.textContent) * -1;
+                previousValue = screen2.textContent;
+                currentValue = "";
+            }
+
+            
+        };
+
 
 
 //Next Steps:
