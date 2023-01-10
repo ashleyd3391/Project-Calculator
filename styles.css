@@ -6,6 +6,8 @@
 .calcBody{
    display: flex;
    background-color: pink;
+   border-style: solid;
+   border-color: rgb(206, 97, 115);;
    align-items: center;
    flex-direction: column;
    height: 600px;
@@ -52,6 +54,16 @@
     border-radius: 100px;
     font-size: 20px;
     color: rgb(206, 97, 115);
+    
+}
+
+.numberButton:hover, .operatorButton:hover, #clear:hover{
+    background-color: rgb(238, 137, 154);
+    color: white;
+}
+
+#plus:hover, #minus:hover, #times:hover, #divide:hover, #equal:hover{
+    background-color: rgb(185, 62, 82);
     
 }
 
