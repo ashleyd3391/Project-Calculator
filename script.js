@@ -26,10 +26,12 @@ const decimal = document.querySelector("#decimal");
 const sign = document.querySelector("#sign");
       sign.addEventListener("click", changeSign);
 const percent = document.querySelector("#percent");
+      percent.addEventListener("click", percentage);
 
 const clear = document.querySelector("#clear");
       clear.addEventListener("click", reset);
 const deleteNumber = document.querySelector("#delete");
+      deleteNumber.addEventListener("click", undo);
 
 //Values
 let previousValue = "";
@@ -43,6 +45,7 @@ let operators = ["+","-","*","/" ];
         button.addEventListener('click', (e) => {
             updateNumber(e.target.textContent);
             previousValue = parseInt(screen.textContent);
+          
             
             
         
@@ -54,7 +57,11 @@ let operators = ["+","-","*","/" ];
         operatorButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 updateNumber(e.target.textContent);
+            
+               
                 
+                
+        
                 
                
 
@@ -65,6 +72,8 @@ function updateNumber(number){
     if(currentValue.length <= 5) {
         currentValue += number;
         screen.textContent = currentValue + " ";
+    
+        
     }
  
     }
@@ -72,72 +81,63 @@ function updateNumber(number){
 
 
 function handleOperator(operator) {
-   
     screen2.textContent = previousValue;
     screen.textContent = currentValue;
     currentValue = "";
-    
-    
 
+};
 
+function addition() {
+    let operator = "+";
+    screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+    screen.textContent = (previousValue += currentValue);
+};
 
+function subtraction() {
+    let operator = "-";
+    screen2.textContent = `${previousValue}` + operator + (currentValue * -1) + "=";
+    screen.textContent = (previousValue -= (currentValue * -1));
 
-    
-}
+};
 
+function multiplication(){
+    let operator = "*";
+    screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+    screen.textContent = (previousValue *= currentValue);
+ 
+};
+
+function division(){
+    let operator = "/";
+    screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
+    screen.textContent = (previousValue /= currentValue);
+};
 
 function calculate(){
-    previousValue = parseInt(screen2.textContent);
-    currentValue = parseInt(screen.textContent);
+    previousValue = Number(screen2.textContent);
+    currentValue = Number(screen.textContent);
 
-    
     if(screen.textContent.includes("+")){
-
-        function addition() {
-            let operator = "+";
-            screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-            screen.textContent = (previousValue += currentValue);
-        }
 
         addition();
     }
     
     else if(screen.textContent.includes("-")){
 
-        function subtraction() {
-            let operator = "-";
-            screen2.textContent = `${previousValue}` + operator + (currentValue * -1) + "=";
-            screen.textContent = (previousValue -= (currentValue * -1));
-
-        }
-
         subtraction();
     }
 
-   else if(screen.textContent.includes("*")){
+    else if(screen.textContent.includes("*")){
 
-        function multiplication(){
-            let operator = "*";
-            screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-            screen.textContent = (previousValue *= currentValue);
-         
-            } 
-
-            multiplication();
-        }
+        multiplication();
+    }
 
 
     else{
 
-        function division(){
-        let operator = "/";
-        screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-        screen.textContent = (previousValue /= currentValue);
-        }
-
         division();
-}
-    };
+    }
+};
 
 
 
@@ -152,7 +152,7 @@ screen.textContent = "0";
 
     
 
-        function changeSign(){
+function changeSign(){
 
 
         if(Number(screen2.textContent) >= -1 || Number(screen.textContent) >= -1){
@@ -174,7 +174,19 @@ screen.textContent = "0";
             }
 
             
-        };
+};
+
+function percentage(){
+    previousValue = Number(screen.textContent);
+    screen2.textContent = previousValue /= 100;
+};
+
+function undo(){
+  
+        screen.textContent = screen.textContent.slice(0, -1);
+        previousValue = Number(screen.textContent);
+        screen2.textContent = previousValue;
+};
 
 
 
