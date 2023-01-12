@@ -14,6 +14,7 @@
     border-color: rgb(206, 97, 115);;
     border-bottom-color: pink;
     
+    
 }
 
 .leftEar{
@@ -85,7 +86,7 @@
     justify-content: center;
 }
 
-.numberButton, .operatorButton, #clear{
+.numberButton, .operatorButton, #clear, #delete{
     height: 90px;
     width: 90px;
     border-radius: 100px;
