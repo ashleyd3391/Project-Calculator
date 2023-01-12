@@ -95,7 +95,7 @@
     
 }
 
-.numberButton:hover, .operatorButton:hover, #clear:hover{
+.numberButton:hover, .operatorButton:hover, #clear:hover, #delete:hover{
     background-color: rgb(238, 137, 154);
     color: white;
 }
