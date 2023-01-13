@@ -93,6 +93,7 @@
         };
 
         function multiplication(){
+            let currentValue = screen.textContent.replace("*", "");
             let operator = "*";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
             screen.textContent = (previousValue *= currentValue);
@@ -100,6 +101,7 @@
         };
 
         function division(){
+            let currentValue = screen.textContent.replace("/", "");
             let operator = "/";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
             screen.textContent = (previousValue /= currentValue);
