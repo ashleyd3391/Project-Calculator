@@ -58,7 +58,7 @@
         operatorButtons.forEach((button) => {
             button.addEventListener('click', (e) => {
                 updateNumber(e.target.textContent);
-
+                
             });
         });
 
@@ -151,7 +151,7 @@
 
         function changeSign(){
 
-
+            
                 if(Number(screen2.textContent) >= -1 || Number(screen.textContent) >= -1){
                     currentValue = screen.textContent;
                     screen2.textContent = (currentValue) * -1;
@@ -193,15 +193,26 @@
 
         function decimals(){
             screen.textContent = screen.textContent += 0.0;
+
+            let decimalCount = 0;
+
+            if(screen.textContent.includes(".")){
+                decimalCount++;
+            }
+
+            if(decimalCount === 1){
+                decimal.disabled = true;
+            }
+            else{
+                decimal.enabled = true;
+            }
         };
 
 
 
 
 //Next Steps:
-//  1. Fix multiplication error
-//  2. Fix division error
-//  3. Make delete button functional
-//  4. Make percentage button functional
-//  5. Make decimal button functional
-//  6. Make sign button functional
+//  1. Fix duplicate decimals
+//  2. Fix sign error
+//  3. Prevent equal sign from being selected before problem input
+//  4. return error when dividing by zero
