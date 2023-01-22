@@ -82,13 +82,13 @@
         function addition() {
             let operator = "+";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-            screen.textContent = (previousValue += currentValue).toFixed(4);
+            screen.textContent = (previousValue += currentValue).toFixed(2);
         };
 
         function subtraction() {
             let operator = "-";
             screen2.textContent = `${previousValue}` + operator + (currentValue * -1) + "=";
-            screen.textContent = (previousValue -= (currentValue * -1)).toFixed(4);
+            screen.textContent = (previousValue -= (currentValue * -1)).toFixed(2);
 
         };
 
@@ -96,7 +96,7 @@
             let currentValue = screen.textContent.replace("*", "");
             let operator = "*";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-            screen.textContent = (previousValue *= currentValue).toFixed(4);
+            screen.textContent = (previousValue *= currentValue).toFixed(2);
         
         };
 
@@ -104,7 +104,7 @@
             let currentValue = screen.textContent.replace("/", "");
             let operator = "/";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
-            screen.textContent = (previousValue /= currentValue).toFixed(4);
+            screen.textContent = (previousValue /= currentValue).toFixed(2);
 
             if(currentValue == 0){
                 screen.textContent = "Don't divide by zero!";
