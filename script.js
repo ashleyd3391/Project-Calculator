@@ -105,6 +105,10 @@
             let operator = "/";
             screen2.textContent = `${previousValue}` + operator + `${currentValue}` + "=";
             screen.textContent = (previousValue /= currentValue).toFixed(4);
+
+            if(currentValue == 0){
+                screen.textContent = "Don't divide by zero!";
+            }
         };
 
 
@@ -208,11 +212,3 @@
             }
         };
 
-
-
-
-//Next Steps:
-//  1. Fix duplicate decimals
-//  2. Fix sign error
-//  3. Prevent equal sign from being selected before problem input
-//  4. return error when dividing by zero
