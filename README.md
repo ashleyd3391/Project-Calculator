@@ -4,7 +4,7 @@
 
 In this project, I will be creating a functional calculator with HTML, CSS, and Javascript. It will contain functions for all basic math operators, as well as other Javascript fundamentals.
 
-<h1>What I learned:</h1>
+<h3>What I learned:</h3>
 
 <ul>
     <li>How to parse strings into numbers</li>
