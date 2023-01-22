@@ -1,10 +1,10 @@
 # Project-Calculator
 
-Live Demo
+<a href="https://ashleyd3391.github.io/Project-Calculator/">Live Demo</a>
 
-In this project, I will be creating a functional calculator with HTML, CSS, and Javascript. It will contain functions for all basic math operators, as well as other javascript fundamentals.
+In this project, I will be creating a functional calculator with HTML, CSS, and Javascript. It will contain functions for all basic math operators, as well as other Javascript fundamentals.
 
-What I learned:
+<h1>What I learned:</h1>
 
 <ul>
     <li>How to parse strings into numbers</li>
